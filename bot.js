@@ -8,7 +8,6 @@ const fs = require('fs');
 const client = new Discord.Client();
 const prefix = '!'
 
-client.login(discord_token);
 client.on('ready', function() {
 	console.log(`i am ready ${client.user.username}`);
 
