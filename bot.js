@@ -239,51 +239,6 @@ client.on("message", message => {
 };     
 });
 
-var dat = JSON.parse("{}");
-function forEachObject(obj, func) {
-    Object.keys(obj).forEach(function (key) { func(key, obj[key]) });
-}
-client.on("ready", () => {
-    var guild;
-    while (!guild)
-        guild = client.guilds.get("379533459938607113");
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            dat[Inv] = Invite.uses;
-        });
-    });
-});
-
-
-client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.get("379613215027363840");
-    if (!channel) {
-        console.log("!the channel id it's not correct");
-        return;
-    }
-    if (member.id == client.user.id) {
-        return;
-    }
-    console.log('-');
-    var guild;
-    while (!guild)
-        guild = client.guilds.get("379533459938607113");
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            if (dat[Inv])
-                if (dat[Inv] < Invite.uses) {
-                    setTimeout(function() {
- client.channels.find("name","welcome").send(`**invited by** ${Invite.inviter} `)
- 
-                    },1500);
- }
-            dat[Inv] = Invite.uses;
-       
-       });
-    });
-});
 
 
 
