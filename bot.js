@@ -15,7 +15,17 @@ client.on('ready', function() {
 });
 
 
-
+client.on('ready', () => {
+    client.user.setStatus('available')
+    client.user.setPresence({
+        game: {
+            name: 'ArabGS.com',
+            type: "Streaming",
+            url: "https://www.twitch.tv/omarjxh"
+        }
+    });
+  
+});
 	
 
 
